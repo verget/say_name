@@ -1,0 +1,16 @@
+{
+  "name": "nea-bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-local": "micro-bot -e",
+    "start": "micro-bot -d ${NOW_URL}"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "micro-bot": "^2.1.0"
+  }
+}
