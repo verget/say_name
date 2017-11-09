@@ -49,21 +49,6 @@ app.command('test', ctx => {
   console.log(ctx.update.message);
 });
 
-app.hears('а как?', ({ reply }) => {
-  console.log('THEY KNOW!!!');
-  reply('а никак!')
-});
-
-app.hears('а как', ({ reply }) => {
-  console.log('THEY KNOW!!!');
-  reply('а никак!')
-});
-
-app.hears('как?', ({ reply }) => {
-  console.log('THEY KNOW!!!');
-  reply('а никак!')
-});
-
 const saveName = (name) => {
   if (name.length < 3) {
     return false;
@@ -92,7 +77,10 @@ const saveName = (name) => {
 
 app.hears(/.*/, (ctx) => {
   saveName(ctx.update.message.text);
-  
+
+  if (ctx.update.message.text == 'как?' || ctx.update.message.text == 'как') {
+    return ctx.reply('а никак!');
+  }
   
   if (ctx.update.message.text == 'андрей' || ctx.update.message.text == 'Андрей') {
      return ctx.reply('Хороший вариант, но нет');
@@ -141,7 +129,6 @@ app.hears(/.*/, (ctx) => {
   } else {
     return ctx.reply('неа, попробуй еще');
   }
-  
 });
 
 
