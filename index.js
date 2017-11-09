@@ -45,17 +45,17 @@ app.command('top', (ctx) => {
   ctx.reply(topString);
 });
 
-app.command('/was (.*)/', ctx => {
-  const name = ctx.match[1];
-
-  for (let n of names) {
-    if (n.title == name) {
-      return ctx.reply(n.count)
-      break;
-    }
-  }
-  return ctx.reply(0);
-})
+// app.command('/was (.*)/', ctx => {
+//   const name = ctx.match[1];
+//
+//   for (let n of names) {
+//     if (n.title == name) {
+//       return ctx.reply(n.count)
+//       break;
+//     }
+//   }
+//   return ctx.reply(0);
+// })
 
 app.command('test', ctx => {
   console.log(ctx.update.message);
