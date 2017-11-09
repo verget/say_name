@@ -45,6 +45,18 @@ app.command('top', (ctx) => {
   ctx.reply(topString);
 });
 
+app.command('/was (.*)/', ctx => {
+  const name = ctx.match[1];
+
+  for (let n of names) {
+    if (n.title == name) {
+      return ctx.reply(n.count)
+      break;
+    }
+  }
+  return ctx.reply(0);
+})
+
 app.command('test', ctx => {
   console.log(ctx.update.message);
 });
@@ -78,7 +90,8 @@ const saveName = (name) => {
 app.hears(/.*/, (ctx) => {
   saveName(ctx.update.message.text);
 
-  if (ctx.update.message.text == 'как?' || ctx.update.message.text == 'как') {
+  if (ctx.update.message.text == 'как?' || ctx.update.message.text == 'как'
+    || ctx.update.message.text == 'Как'  || ctx.update.message.text == 'Как?') {
     return ctx.reply('а никак!');
   }
   
