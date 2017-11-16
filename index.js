@@ -45,23 +45,20 @@ app.command('top', (ctx) => {
   ctx.reply(topString);
 });
 
+// app.command('/was (.*)/', ctx => {
+//   const name = ctx.match[1];
+//
+//   for (let n of names) {
+//     if (n.title == name) {
+//       return ctx.reply(n.count)
+//       break;
+//     }
+//   }
+//   return ctx.reply(0);
+// })
+
 app.command('test', ctx => {
   console.log(ctx.update.message);
-});
-
-app.hears('а как?', ({ reply }) => {
-  console.log('THEY KNOW!!!');
-  reply('а никак!')
-});
-
-app.hears('а как', ({ reply }) => {
-  console.log('THEY KNOW!!!');
-  reply('а никак!')
-});
-
-app.hears('как?', ({ reply }) => {
-  console.log('THEY KNOW!!!');
-  reply('а никак!')
 });
 
 const saveName = (name) => {
@@ -91,6 +88,10 @@ const saveName = (name) => {
 };
 
 app.hears(/.*/, (ctx) => {
+  if (ctx.update.message.text == 'как?' || ctx.update.message.text == 'как'
+    || ctx.update.message.text == 'Как'  || ctx.update.message.text == 'Как?') {
+    return ctx.reply('а никак!');
+  }
   if (ctx.update.message.text.length < 15) {
     saveName(ctx.update.message.text);
   }
@@ -142,7 +143,6 @@ app.hears(/.*/, (ctx) => {
   } else {
     return ctx.reply('неа, попробуй еще');
   }
-  
 });
 
 
