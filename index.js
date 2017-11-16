@@ -91,8 +91,9 @@ const saveName = (name) => {
 };
 
 app.hears(/.*/, (ctx) => {
-  saveName(ctx.update.message.text);
-  
+  if (ctx.update.message.text.length < 15) {
+    saveName(ctx.update.message.text);
+  }
   
   if (ctx.update.message.text == 'андрей' || ctx.update.message.text == 'Андрей') {
      return ctx.reply('Хороший вариант, но нет');
